@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nokia MC | Official Store</title>
+
+  <!-- Minecraft Font -->
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #ffcc00;
+      --gold-dark: #c49a00;
+      --bg: #0b0b0b;
+      --card: #1b1b1b;
+      --border: #2e2e2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Minecraft', monospace;
+      image-rendering: pixelated;
+    }
+
+    body {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+      url('https://images.alphacoders.com/132/1322149.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: white;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 6px solid #000;
+    }
+
+    header h1 {
+      font-size: 3.8rem;
+      letter-spacing: 5px;
+      color: #000;
+      text-shadow: 4px 4px 0 #fff;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #000;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 18px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      max-width: 1400px;
+      margin: 70px auto;
+      padding: 40px 25px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 30px;
+      border-left: 7px solid var(--gold);
+      padding-left: 15px;
+    }
+
+    /* ===== HERO BANNER ===== */
+    .hero {
+      background: linear-gradient(135deg, #1e1e1e, #101010);
+      border: 2px solid var(--border);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #ccc;
+      line-height: 1.8;
+    }
+
+    .hero-box {
+      background: #000;
+      border: 2px solid var(--gold);
+      padding: 25px;
+      text-align: center;
+    }
+
+    /* ===== STORE GRID ===== */
+    .store {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+  background: rgba(20,20,20,0.9);
+  border: 2px solid #f5c400;
+  border-radius: 14px;
+  padding: 25px;
+  width: 320px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.product.vip:hover {
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.55);
+  border-color: #00ffff;
+}
+
+.product.mvp:hover {
+  box-shadow: 0 0 40px rgba(160, 80, 255, 0.6);
+  border-color: #a050ff;
+}
+
+.product.legend:hover {
+  box-shadow: 0 0 45px rgba(255, 80, 80, 0.65);
+  border-color: #ff5050;
+}
+
+.product::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,216,77,0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.product:hover::before {
+  left: 100%;
+}
+
+.product p {
+  line-height: 1.6;
+}
+
+.product p br {
+  display: block;
+  margin-bottom: 6px;
+}
+
+    .product:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+    }
+
+    .tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--gold);
+      color: #000;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+    }
+
+    .product h3 {
+      color: var(--gold);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .product p {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .buy-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+      color: #000;
+      padding: 12px;
+      border: 3px solid #000;
+      cursor: not-allowed;
+    }
+
+    /* ===== LINKS ===== */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .link-box {
+      background: #000;
+      border: 2px solid var(--border);
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .link-box:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+    }
+
+    .link-box a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #000;
+      padding: 25px;
+      text-align: center;
+      color: #888;
+      border-top: 3px solid var(--gold);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>NOKIA MC</h1>
+  <p>Official Minecraft Network Store</p>
+</header>
+
+<nav>
+  <a href="#home">HOME</a>
+  <a href="#store">STORE</a>
+  <a href="#links">LINKS</a>
+  <a href="#admin">ADMIN</a>
+  <a href="#support">SUPPORT</a>
+</nav>
+
+<section id="home">
+  <div class="hero">
+    <div>
+      <h2>Welcome to Nokia MC</h2>
+      <p>
+        Nokia MC is a large Minecraft network inspired by top-tier servers.
+        Purchase ranks, keys, boosters and exclusive items to enhance your gameplay.
+      </p>
+    </div>
+    <div class="hero-box">
+  🎮 IP: <b>play.nksmp.xyz</b><br><br>
+  🟢 Server Status: <span id="serverStatus">ONLINE</span><br>
+  👥 Players Online: <span id="playerCount">0</span><br><br>
+  ⭐ Version: 1.8 – 1.21
+</div>
+  </div>
+</section>
+
+<script>
+  // ===== REAL-TIME PLAYER COUNT USING PUBLIC API =====
+  async function fetchServerStatus() {
+    try {
+      const res = await fetch('https://api.mcsrvstat.us/2/play.nksmp.xyz');
+      const data = await res.json();
+
+      if (data.online) {
+        document.getElementById('serverStatus').innerText = 'ONLINE';
+        document.getElementById('playerCount').innerText = data.players.online;
+      } else {
+        document.getElementById('serverStatus').innerText = 'OFFLINE';
+        document.getElementById('playerCount').innerText = '0';
+      }
+    } catch (e) {
+      document.getElementById('serverStatus').innerText = 'ERROR';
+      document.getElementById('playerCount').innerText = '-';
+    }
+  }
+
+  fetchServerStatus();
+  setInterval(fetchServerStatus, 10000); // refresh every 10 sec
+</script>
+
+<section id="store">
+  <div class="section-title">Store Items</div>
+
+  <div class="store">
+    <!-- ICON STYLE PRODUCTS -->
+    <div class="product mvp"><span class="tag">BEST</span><h3>MVP Rank</h3><p><b>Perks & Commands:</b><br>✔ /fly<br>✔ /kit mvp<br>✔ /heal<br>✔ /feed<br>✔ /home x6<br>✔ MVP Prefix & Chat Color<br>✔ Access to MVP Crate</p><div class="price">₹399</div><div class="buy-btn">BUY SOON</div></div><div class="buy-btn">BUY SOON</div></div>
+    <div class="product legend"><span class="tag">ELITE</span><h3>LEGEND Rank</h3><p><b>Perks & Commands:</b><br>✔ /fly unlimited<br>✔ /kit legend<br>✔ /heal<br>✔ /feed<br>✔ /near<br>✔ /home x10<br>✔ GOD Prefix & Custom Color<br>✔ Access to ALL Crates</p><div class="price">₹699</div><div class="buy-btn">BUY SOON</div></div><div class="buy-btn">BUY SOON</div></div>
+    <div class="product vip"><span class="tag">CRATE</span><h3>Crate Key x1</h3><p>Chance to win OP rewards.</p><div class="price">₹99</div><div class="buy-btn">BUY SOON</div></div>
+    <div class="product vip"><span class="tag">CRATE</span><h3>Crate Key x5</h3><p>Better value bundle.</p><div class="price">₹399</div><div class="buy-btn">BUY SOON</div></div>
+    <div class="product vip"><span class="tag">BOOST</span><h3>Money Booster</h3><p>2x money for 24 hours.</p><div class="price">₹149</div><div class="buy-btn">BUY SOON</div></div>
+    <div class="product vip"><span class="tag">KIT</span><h3>OP PvP Kit</h3><p>Weapons & armor set.</p><div class="price">₹249</div><div class="buy-btn">BUY SOON</div></div>
+    <div class="product vip"><span class="tag">COSMETIC</span><h3>Particle Effects</h3><p>Cosmetic effects only.</p><div class="price">₹99</div><div class="buy-btn">BUY SOON</div></div>
+  </div>
+</section>
+
+</section>
+
+
+
+<script>
+  function saveItem(){
+    const name = document.getElementById('itemName').value;
+    const price = document.getElementById('itemPrice').value;
+    localStorage.setItem(name, price);
+    document.getElementById('adminMsg').innerText = 'Item saved locally ✔';
+  }
+</script>
+
+</section>
+
+<section id="features">
+  <div class="section-title">Why Choose Nokia MC?</div>
+  <div class="quick-links">
+    <div class="link-box">⚔️ Competitive PvP & Events</div>
+    <div class="link-box">🧱 Lag-Free Survival</div>
+    <div class="link-box">🎁 Custom Crates & Rewards</div>
+    <div class="link-box">🛡️ Active Staff Team</div>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="section-title">Server Highlights</div>
+  <div class="hero">
+    <div>
+      <h2>Daily Active Players</h2>
+      <p>Hundreds of players join Nokia MC every day to grind, PvP and enjoy custom content.</p>
+    </div>
+    <div class="hero-box">
+      🌍 Global Players<br><br>
+      ⚡ Fast & Optimized Server<br>
+      🕒 24/7 Uptime
+    </div>
+  </div>
+</section>
+
+<section id="links">
+  <div class="section-title">Quick Links</div>
+  <div class="quick-links">
+    <div class="link-box"><a href="https://discord.gg/c5sndeDTG" target="_blank">Join Discord</a></div>
+    <div class="link-box"><a href="#">Vote for Rewards</a></div>
+    <div class="link-box"><a href="#">Store Rules</a></div>
+    <div class="link-box"><a href="#">Refund Policy</a></div>
+  </div>
+    <div class="link-box"><a href="#">Vote for Rewards</a></div>
+    <div class="link-box"><a href="#">Store Rules</a></div>
+    <div class="link-box"><a href="#">Refund Policy</a></div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="section-title">Support</div>
+  <div class="hero-box">
+    📧 support@nokiamc.com<br><br>
+    💬 Discord Support (Coming Soon)
+  </div>
+</section>
+
+<footer>
+  © 2026 NOKIA MC • Hypixel-style Store Layout
+</footer>
+
+</body>
+</html>
